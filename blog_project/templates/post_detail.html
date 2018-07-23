@@ -1,19 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block content %}
+
+
+
+<div class="container">
+
+        <div class="card col-sm-12 mx-auto" style="min-height: 500px !important;">
+            {% if post.image.url %}
+                <img src="{{post.image.url}}" alt="xd" class="img-thumbnail">
+            {% endif %}
+    <div class="card-body">
+            <h5 class="card-title">{{post.title|title}} <small>{{post.timestamp|timesince}} ago</small></h5>
+            <hr>
+            <p class="card-text">{{post.content|truncatechars:120}}</p>
+            
+          </div>
+        </div>
     
-    {{post.title}} <br>
-    {{post.content}} <br>
-    {{post.updated}} <br>
-    {{post.timestamp}} <br>
-    {{post.pk}} <br>
-   
-    
-</body>
-</html>
+    </div>
+
+{% endblock content %}

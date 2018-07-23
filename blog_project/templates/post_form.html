@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+ {% block content %}
+
+<div class="container">
+
+<div class="col-sm-6 mx-auto">
+    {% if not updating %}
+    <form action="{% url 'post:create' %}" method="post" enctype="multipart/form-data">
+    {% else %}
+    <form action="{% url 'post:update' pk %}" method="post">
+    {% endif %}
+            {% csrf_token %}
+    {{form.as_p}}
+    <input class="btn btn-primary col-sm-6 mx-auto" type="submit" value="submit">
+</form>
+</div>
+</div>
+{% endblock content %}
+
